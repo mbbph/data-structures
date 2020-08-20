@@ -1,5 +1,6 @@
 var Stack = function() {
-  var instance = Object.create(stackMethods);instance.storage = {};
+  var instance = Object.create(stackMethods);
+  instance.storage = {};
   instance.i = 0;
   return instance;
 };
