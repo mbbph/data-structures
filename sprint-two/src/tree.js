@@ -23,7 +23,8 @@ treeMethods.contains = function(target) {
     return true;
   }
   for (var i = 0; i < this.children.length; i++) {
-    if (this.children[i].treeMethods.contains() === true) {
+    let result = this.children[i].contains(target);
+    if (result === true) {
       return true;
     }
   }
