@@ -23,7 +23,6 @@ var BinarySearchTree = function(value) {
         tree.right.insert(value);
       }
     }
-    console.log(tree);
   };
 
   tree.contains = function(value) {

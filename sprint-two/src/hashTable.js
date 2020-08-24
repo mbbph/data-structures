@@ -1,8 +1,9 @@
 
-
+//TODO: Finish table doubling and halving
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
+  this._count = 0;
 };
 
 HashTable.prototype.insert = function(k, v) {
@@ -20,9 +21,16 @@ HashTable.prototype.insert = function(k, v) {
   }
   if (!overwrite) {
     tuples.push([k, v]);
+    this._count++; //increment number of items
   }
-
   this._storage.set(index, tuples);
+  if (this._count / this._limit > 0.75) {
+    this._limit = this._limit * 2;
+  }
+  console.log(this._count);
+  console.log(this._limit);
+
+
 };
 
 HashTable.prototype.retrieve = function(k) {
@@ -41,7 +49,11 @@ HashTable.prototype.remove = function(k) {
   for (let i = 0; i < tuples.length; i++) {
     if (tuples[i][0] === k) {
       tuples[i][1] = undefined;
+      this._count--;
     }
+  }
+  if (this._count / this._limit < 0.25) {
+    this._limit = Math.ceil(this._limit / 2);
   }
 };
 
