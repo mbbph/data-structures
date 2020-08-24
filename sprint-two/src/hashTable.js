@@ -1,5 +1,6 @@
 
 //TODO: Finish table doubling and halving
+//Related specs are not passing yet
 var HashTable = function() {
   this._limit = 8;
   this._storage = LimitedArray(this._limit);
